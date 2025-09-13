@@ -1,0 +1,17 @@
+<div class="row">
+  <% @tasks.each do |task| %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= task.titulo %></h5>
+          <p class="card-text"><%= truncate(task.descricao, length: 100) %></p>
+          <%= link_to "Show", task, class: "btn btn-primary btn-sm" %>
+          <%= link_to "Edit", edit_task_path(task), class: "btn btn-warning btn-sm" %>
+          <%= link_to "Delete", task, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New Task", new_task_path, class: "btn btn-success mt-3" %>
