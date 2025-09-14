@@ -1,42 +1,21 @@
-<%= form_with(model: pomodoro) do |form| %>
-  <% if pomodoro.errors.any? %>
+<%= form_with(model: [@task, @pomodoro]) do |form| %>
+  <% if @pomodoro.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(pomodoro.errors.count, "error") %> prohibited this pomodoro from being saved:</h2>
-
+      <h2><%= pluralize(@pomodoro.errors.count, "erro") %> proibiu que este pomodoro fosse salvo:</h2>
       <ul>
-        <% pomodoro.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @pomodoro.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
-    </div>
+    </div>  
   <% end %>
 
-  <div>
-    <%= form.label :task_id, style: "display: block" %>
-    <%= form.text_field :task_id %>
-  </div>
-
-  <div>
-    <%= form.label :duracao, style: "display: block" %>
+  <div class="field">
+    <%= form.label :duracao, "Duração (minutos)" %>
     <%= form.number_field :duracao %>
   </div>
 
-  <div>
-    <%= form.label :concluido, style: "display: block" %>
-    <%= form.checkbox :concluido %>
-  </div>
-
-  <div>
-    <%= form.label :inicio_task, style: "display: block" %>
-    <%= form.datetime_field :inicio_task %>
-  </div>
-
-  <div>
-    <%= form.label :fim_task, style: "display: block" %>
-    <%= form.datetime_field :fim_task %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

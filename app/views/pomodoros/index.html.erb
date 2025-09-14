@@ -1,16 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<h1>Pomodoros da Tarefa: <%= @task.titulo %></h1>
 
-<% content_for :title, "Pomodoros" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Duração (minutos)</th>
+      <th>Criado em</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pomodoros.each do |pomodoro| %>
+      <tr>
+        <td><%= pomodoro.duracao %></td>
+        <td><%= pomodoro.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<h1>Pomodoros</h1>
-
-<div id="pomodoros">
-  <% @pomodoros.each do |pomodoro| %>
-    <%= render pomodoro %>
-    <p>
-      <%= link_to "Show this pomodoro", pomodoro %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New pomodoro", new_pomodoro_path %>
+<%= link_to "Novo Pomodoro", new_task_pomodoro_path(@task), class: "btn btn-success" %>
+<%= link_to "Voltar para Tarefas", tasks_path, class: "btn btn-outline-primary" %>
