@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      task: "Tarefa"
+    attributes:
+      task:
+        titulo: "Título"
+        descricao: "Descrição"
+    errors:
+      models:
+        task:
+          attributes:
+            titulo:
+              blank: "não pode ficar em branco"
+            descricao:
+              blank: "não pode ficar em branco"
